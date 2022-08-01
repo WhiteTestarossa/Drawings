@@ -1,5 +1,5 @@
 //
-//  CanvasView.h
+//  Figures.h
 //  Drawings
 //
 //  Created by Daniel Belokursky on 1.08.22.
@@ -9,9 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CanvasView : UIView
+@interface Figures : UIBezierPath
 
--(void)drawWithTimer;
++(UIBezierPath *)facePath;
++(UIBezierPath *)lipsPath;
++(UIBezierPath *)neckPath;
 
 @end
 

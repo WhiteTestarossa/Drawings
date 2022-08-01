@@ -1,5 +1,5 @@
 //
-//  CanvasView.h
+//  PaletteViewController.h
 //  Drawings
 //
 //  Created by Daniel Belokursky on 1.08.22.
@@ -9,9 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CanvasView : UIView
-
--(void)drawWithTimer;
+@interface PaletteViewController : UIViewController
 
 @end
 

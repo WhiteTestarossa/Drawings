@@ -6,6 +6,8 @@
 //
 
 #import "ArtistViewController.h"
+#import "DrawingsViewController.h"
+#import "PaletteViewController.h"
 #import "CanvasView.h"
 #import "Button.h"
 
@@ -63,7 +65,13 @@ typedef NS_ENUM(NSInteger, State)
 
 #pragma mark Navigation
 - (void)drawingsTapped:(id)sender {
-  
+    DrawingsViewController *drawingsVC = [[DrawingsViewController alloc] init];
+    [self.navigationController pushViewController:drawingsVC animated:true];
+}
+
+- (void)paletteTapped:(id)sender {
+    PaletteViewController *paletteVC = [[PaletteViewController alloc] init];
+    [self presentViewController:paletteVC animated:true completion:nil];
 }
 
 #pragma mark UI Setup
@@ -81,6 +89,7 @@ typedef NS_ENUM(NSInteger, State)
         ]];
     
     self.paletteButton = [[Button alloc] initWithTitle: @"Open Palette"];
+    [self.paletteButton addTarget:self action:@selector(paletteTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.paletteButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -89,6 +98,7 @@ typedef NS_ENUM(NSInteger, State)
     ]];
     
     self.drawButton = [[Button alloc] initWithTitle:@"Draw"];
+    [self.drawButton addTarget:self action:@selector(drawFigureAtCanvasView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.drawButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -126,4 +136,8 @@ typedef NS_ENUM(NSInteger, State)
     self.shareButton.enabled = FALSE;
 }
 
+- (void)drawFigureAtCanvasView
+{
+    [self.canvasView drawWithTimer];
+}
 @end

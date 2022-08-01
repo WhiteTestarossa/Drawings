@@ -6,6 +6,13 @@
 //
 
 #import "CanvasView.h"
+#import "Figures.h"
+
+@interface CanvasView ()
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer1;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer2;
+@end
 
 @implementation CanvasView
 
@@ -14,6 +21,7 @@
     self = [super init];
     if (self) {
         [self setup];
+        [self addDrawLayer];
     }
     return self;
 }
@@ -29,6 +37,48 @@
     self.layer.shadowOpacity = 0.5;
     self.layer.shadowRadius = 8.0;
     self.translatesAutoresizingMaskIntoConstraints = FALSE;
+}
+
+-(void)addDrawLayer
+{
+    self.shapeLayer1 = [CAShapeLayer layer];
+    self.shapeLayer1.path = [Figures facePath].CGPath;
+    self.shapeLayer2 = [CAShapeLayer layer];
+    self.shapeLayer2.path = [Figures lipsPath].CGPath;
+    
+    
+    [self.shapeLayer1 setFillColor:UIColor.whiteColor.CGColor];
+    self.shapeLayer1.strokeStart = 0;
+    self.shapeLayer1.strokeEnd = 0;
+    self.shapeLayer1.strokeColor = [UIColor orangeColor].CGColor;
+    self.shapeLayer1.lineWidth   = 3.0;
+    self.shapeLayer1.lineCap = kCALineCapRound;
+    
+    [self.shapeLayer2 setFillColor:UIColor.whiteColor.CGColor];
+    self.shapeLayer2.strokeStart = 0;
+    self.shapeLayer2.strokeEnd = 0;
+    self.shapeLayer2.strokeColor = [UIColor blueColor].CGColor;
+    self.shapeLayer2.lineWidth   = 3.0;
+    self.shapeLayer2.lineCap = kCALineCapRound;
+    
+    [self.layer addSublayer: self.shapeLayer1];
+    [self.layer addSublayer: self.shapeLayer2];
+}
+
+-(void)drawAtLayer
+{
+    if (self.shapeLayer1.strokeEnd < 1 && self.shapeLayer2.strokeEnd <1) {
+        self.shapeLayer1.strokeEnd += (1.0 / (60.0 * 2.0));
+        self.shapeLayer2.strokeEnd += (1.0 / (60.0 * 2.0));
+    } else {
+        [self.timer invalidate];
+        [self setTimer: nil];
+    }
+}
+
+-(void)drawWithTimer
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer) userInfo:nil repeats:YES];
 }
 
 @end
