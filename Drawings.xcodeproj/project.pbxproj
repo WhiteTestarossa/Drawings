@@ -12,7 +12,11 @@
 		9A065E5A289845B9004D57F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A065E59289845B9004D57F9 /* Assets.xcassets */; };
 		9A065E5D289845B9004D57F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A065E5B289845B9004D57F9 /* LaunchScreen.storyboard */; };
 		9A065E60289845B9004D57F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E5F289845B9004D57F9 /* main.m */; };
-		9A065E6828985D9D004D57F9 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E6728985D9D004D57F9 /* ArtistViewController.m */; };
+		9A065E86289867A6004D57F9 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A065E84289867A6004D57F9 /* Montserrat-Medium.ttf */; };
+		9A065E87289867A6004D57F9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A065E85289867A6004D57F9 /* Montserrat-Regular.ttf */; };
+		9A065E8A289867FC004D57F9 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E89289867FC004D57F9 /* ArtistViewController.m */; };
+		9A065E8D28986891004D57F9 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E8C28986891004D57F9 /* CanvasView.m */; };
+		9A065E9028986936004D57F9 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E8F28986936004D57F9 /* Button.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +29,14 @@
 		9A065E5C289845B9004D57F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A065E5E289845B9004D57F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A065E5F289845B9004D57F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9A065E6628985D9D004D57F9 /* ArtistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
-		9A065E6728985D9D004D57F9 /* ArtistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
+		9A065E84289867A6004D57F9 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		9A065E85289867A6004D57F9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		9A065E88289867FC004D57F9 /* ArtistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
+		9A065E89289867FC004D57F9 /* ArtistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
+		9A065E8B28986891004D57F9 /* CanvasView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		9A065E8C28986891004D57F9 /* CanvasView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		9A065E8E28986936004D57F9 /* Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		9A065E8F28986936004D57F9 /* Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +73,28 @@
 				9A065E4E289845B5004D57F9 /* AppDelegate.m */,
 				9A065E50289845B5004D57F9 /* SceneDelegate.h */,
 				9A065E51289845B5004D57F9 /* SceneDelegate.m */,
-				9A065E6628985D9D004D57F9 /* ArtistViewController.h */,
-				9A065E6728985D9D004D57F9 /* ArtistViewController.m */,
+				9A065E83289867A6004D57F9 /* Fonts */,
+				9A065E88289867FC004D57F9 /* ArtistViewController.h */,
+				9A065E89289867FC004D57F9 /* ArtistViewController.m */,
+				9A065E8B28986891004D57F9 /* CanvasView.h */,
+				9A065E8C28986891004D57F9 /* CanvasView.m */,
+				9A065E8E28986936004D57F9 /* Button.h */,
+				9A065E8F28986936004D57F9 /* Button.m */,
 				9A065E59289845B9004D57F9 /* Assets.xcassets */,
 				9A065E5B289845B9004D57F9 /* LaunchScreen.storyboard */,
 				9A065E5E289845B9004D57F9 /* Info.plist */,
 				9A065E5F289845B9004D57F9 /* main.m */,
 			);
 			path = Drawings;
+			sourceTree = "<group>";
+		};
+		9A065E83289867A6004D57F9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9A065E84289867A6004D57F9 /* Montserrat-Medium.ttf */,
+				9A065E85289867A6004D57F9 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +153,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A065E87289867A6004D57F9 /* Montserrat-Regular.ttf in Resources */,
 				9A065E5D289845B9004D57F9 /* LaunchScreen.storyboard in Resources */,
+				9A065E86289867A6004D57F9 /* Montserrat-Medium.ttf in Resources */,
 				9A065E5A289845B9004D57F9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +170,9 @@
 				9A065E4F289845B5004D57F9 /* AppDelegate.m in Sources */,
 				9A065E60289845B9004D57F9 /* main.m in Sources */,
 				9A065E52289845B5004D57F9 /* SceneDelegate.m in Sources */,
-				9A065E6828985D9D004D57F9 /* ArtistViewController.m in Sources */,
+				9A065E9028986936004D57F9 /* Button.m in Sources */,
+				9A065E8A289867FC004D57F9 /* ArtistViewController.m in Sources */,
+				9A065E8D28986891004D57F9 /* CanvasView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
