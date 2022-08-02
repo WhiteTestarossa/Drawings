@@ -36,25 +36,12 @@
 - (void)setHighlightedState {
     self.layer.shadowColor = [UIColor colorWithRed:33.0/255.0 green:176.0/255 blue:142.0/255.0 alpha:1.0].CGColor;
     self.layer.shadowRadius = 4.0;
-    self.alpha = 1.0;
-    [self setEnabled:YES];
 }
 
 - (void)setDefaultState {
     self.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.25].CGColor;
     self.layer.shadowRadius = 2.0;
-    self.alpha = 1.0;
-    [self setEnabled:YES];
 }
-
-- (void)setDisabledState {
-    self.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.25].CGColor;
-    self.layer.shadowRadius = 2.0;
-    self.alpha = 0.5;
-    self.enabled = NO;
-}
-
-
 
 - (void)setHighlighted:(BOOL)highlighted
 {

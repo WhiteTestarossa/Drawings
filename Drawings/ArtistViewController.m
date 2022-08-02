@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, State)
 @property (nonatomic, strong) Button *timerButton;
 @property (nonatomic, strong) Button *drawButton;
 @property (nonatomic, strong) Button *shareButton;
+@property (nonatomic, strong) UIButton *bbb;
 
 @property(nonatomic) State state;
 
@@ -89,7 +90,7 @@ typedef NS_ENUM(NSInteger, State)
         ]];
     
     self.paletteButton = [[Button alloc] initWithTitle: @"Open Palette"];
-    [self.paletteButton addTarget:self action:@selector(paletteTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.paletteButton addTarget:self action:@selector(setupDoneState) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.paletteButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -98,7 +99,8 @@ typedef NS_ENUM(NSInteger, State)
     ]];
     
     self.drawButton = [[Button alloc] initWithTitle:@"Draw"];
-    [self.drawButton addTarget:self action:@selector(drawFigureAtCanvasView) forControlEvents:UIControlEventTouchUpInside];
+    [self.drawButton addTarget:self action:@selector(drawFigureAtCanvasView:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.drawButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -122,6 +124,18 @@ typedef NS_ENUM(NSInteger, State)
         [self.shareButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant: -41.0],
     ]];
     
+    self.bbb = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 200, 300)];
+    [self.bbb addTarget:self action:@selector(setupDrawState) forControlEvents:UIControlEventTouchUpInside];
+    [self.bbb setBackgroundColor:UIColor.brownColor];
+    self.bbb.translatesAutoresizingMaskIntoConstraints = false;
+    [self.bbb setTitle:@"TEST" forState:UIControlStateNormal];
+    [self.view addSubview:self.bbb];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.bbb.topAnchor constraintEqualToAnchor:self.timerButton.bottomAnchor constant:20.0],
+        [self.bbb.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant: 20.0],
+    ]];
+    
+    
     [self setupIdleState];
 }
 
@@ -136,8 +150,39 @@ typedef NS_ENUM(NSInteger, State)
     self.shareButton.enabled = FALSE;
 }
 
-- (void)drawFigureAtCanvasView
+- (void)setupDrawState
 {
+    self.state = draw;
+    
+    self.drawButton.alpha = 0.5;
+    self.paletteButton.alpha = 0.5;
+    self.timerButton.alpha = 0.5;
+    
+    
+    self.drawButton.enabled = FALSE;
+    self.paletteButton.enabled = FALSE;
+    self.timerButton.enabled = FALSE;
+}
+
+- (void)setupDoneState
+{
+    self.state = done;
+    self.paletteButton.alpha = 0.5;
+    self.drawButton.alpha = 1.0;
+    self.timerButton.alpha = 0.5;
+    self.shareButton.alpha = 1.0;
+    
+    [self.drawButton setTitle:@"Reset" forState:UIControlStateNormal];
+    self.shareButton.enabled = TRUE;
+    self.paletteButton.enabled = FALSE;
+    self.drawButton.enabled = TRUE;
+    self.timerButton.enabled = FALSE;
+    
+}
+
+- (void)drawFigureAtCanvasView:(Button *)sender
+{
+    [self setupDrawState];
     [self.canvasView drawWithTimer];
 }
 @end
