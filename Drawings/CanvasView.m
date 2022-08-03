@@ -13,6 +13,7 @@
 @property (nonatomic, strong) CAShapeLayer *shapeLayer1;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer2;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer3;
+
 @end
 
 @implementation CanvasView
@@ -84,6 +85,12 @@
     } else {
         [self.timer invalidate];
         [self setTimer: nil];
+        if ([self.delegate respondsToSelector:@selector(didFinishDrawing)])
+        {
+            [self.delegate didFinishDrawing];
+        } else {
+            NSLog(@"NOT RESPONDING");
+        }
     }
 }
 

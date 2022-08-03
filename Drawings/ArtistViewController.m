@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, State)
 @property (nonatomic, strong) Button *timerButton;
 @property (nonatomic, strong) Button *drawButton;
 @property (nonatomic, strong) Button *shareButton;
-@property (nonatomic, strong) UIButton *bbb;
 
 @property(nonatomic) State state;
 
@@ -80,6 +79,7 @@ typedef NS_ENUM(NSInteger, State)
 - (void)setupUI
 {
     self.canvasView = [[CanvasView alloc] init];
+    [self.canvasView setDelegate: (id)self];
     [self.view addSubview: self.canvasView];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -123,18 +123,6 @@ typedef NS_ENUM(NSInteger, State)
         [self.shareButton.topAnchor constraintEqualToAnchor:self.drawButton.bottomAnchor constant:20.0],
         [self.shareButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant: -41.0],
     ]];
-    
-    self.bbb = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 200, 300)];
-    [self.bbb addTarget:self action:@selector(setupDrawState) forControlEvents:UIControlEventTouchUpInside];
-    [self.bbb setBackgroundColor:UIColor.brownColor];
-    self.bbb.translatesAutoresizingMaskIntoConstraints = false;
-    [self.bbb setTitle:@"TEST" forState:UIControlStateNormal];
-    [self.view addSubview:self.bbb];
-    [NSLayoutConstraint activateConstraints:@[
-        [self.bbb.topAnchor constraintEqualToAnchor:self.timerButton.bottomAnchor constant:20.0],
-        [self.bbb.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant: 20.0],
-    ]];
-    
     
     [self setupIdleState];
 }
@@ -185,4 +173,21 @@ typedef NS_ENUM(NSInteger, State)
     [self setupDrawState];
     [self.canvasView drawWithTimer];
 }
+@end
+
+#pragma mark Category
+
+@interface ArtistViewController (CanvasViewDelegateMethods) 
+
+- (void)didFinishDrawing;
+
+@end
+
+@implementation ArtistViewController (CanvasViewDelegateMethods)
+
+- (void)didFinishDrawing
+{
+    [self setupDoneState];
+}
+
 @end

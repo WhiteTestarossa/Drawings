@@ -9,9 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CanvasViewDelegate <NSObject>
+
+- (void)didFinishDrawing;
+
+@end
+
 @interface CanvasView : UIView
 
 -(void)drawWithTimer;
+@property (nonatomic, weak) id <CanvasViewDelegate> delegate;
 
 @end
 
