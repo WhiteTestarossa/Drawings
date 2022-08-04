@@ -136,6 +136,8 @@ typedef NS_ENUM(NSInteger, State)
     self.shareButton.alpha = 0.5;
     
     self.shareButton.enabled = FALSE;
+    self.paletteButton.enabled = TRUE;
+    self.timerButton.enabled = TRUE;
     [self.drawButton setTitle:@"Draw" forState:UIControlStateNormal];
     
     for (CAShapeLayer *layer in [self.canvasView.layer.sublayers reverseObjectEnumerator])
