@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, State)
         ]];
     
     self.paletteButton = [[Button alloc] initWithTitle: @"Open Palette"];
-    [self.paletteButton addTarget:self action:@selector(setupDoneState) forControlEvents:UIControlEventTouchUpInside];
+    [self.paletteButton addTarget:self action:@selector(paletteTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.paletteButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -136,6 +136,12 @@ typedef NS_ENUM(NSInteger, State)
     self.shareButton.alpha = 0.5;
     
     self.shareButton.enabled = FALSE;
+    [self.drawButton setTitle:@"Draw" forState:UIControlStateNormal];
+    
+    for (CAShapeLayer *layer in [self.canvasView.layer.sublayers reverseObjectEnumerator])
+    {
+        layer.strokeEnd = 0;
+    }
 }
 
 - (void)setupDrawState
@@ -170,8 +176,14 @@ typedef NS_ENUM(NSInteger, State)
 
 - (void)drawFigureAtCanvasView:(Button *)sender
 {
-    [self setupDrawState];
-    [self.canvasView drawWithTimer];
+    if (self.state == 0)
+    {
+        [self setupDrawState];
+        [self.canvasView drawWithTimer];
+    } else if (self.state == 2){
+        self.state = 0;
+        [self setupIdleState];
+    }
 }
 @end
 

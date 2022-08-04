@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         [self setup];
-        [self addDrawLayer];
+        
     }
     return self;
 }
@@ -54,21 +54,21 @@
     self.shapeLayer1.strokeStart = 0;
     self.shapeLayer1.strokeEnd = 0;
     self.shapeLayer1.strokeColor = [UIColor orangeColor].CGColor;
-    self.shapeLayer1.lineWidth   = 3.0;
+    self.shapeLayer1.lineWidth   = 2.0;
     self.shapeLayer1.lineCap = kCALineCapRound;
     
     [self.shapeLayer2 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer2.strokeStart = 0;
     self.shapeLayer2.strokeEnd = 0;
     self.shapeLayer2.strokeColor = [UIColor blueColor].CGColor;
-    self.shapeLayer2.lineWidth   = 3.0;
+    self.shapeLayer2.lineWidth   = 2.0;
     self.shapeLayer2.lineCap = kCALineCapRound;
     
     [self.shapeLayer3 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer3.strokeStart = 0;
     self.shapeLayer3.strokeEnd = 0;
     self.shapeLayer3.strokeColor = [UIColor blackColor].CGColor;
-    self.shapeLayer3.lineWidth   = 3.0;
+    self.shapeLayer3.lineWidth   = 2.0;
     self.shapeLayer3.lineCap = kCALineCapRound;
     
     [self.layer addSublayer: self.shapeLayer1];
@@ -96,6 +96,7 @@
 
 -(void)drawWithTimer
 {
+    [self addDrawLayer];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer) userInfo:nil repeats:YES];
 }
 
