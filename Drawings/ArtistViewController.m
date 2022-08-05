@@ -4,9 +4,8 @@
 //
 //  Created by Daniel Belokursky on 1.08.22.
 //
-
+#import "Drawings-Swift.h"
 #import "ArtistViewController.h"
-#import "DrawingsViewController.h"
 #import "PaletteViewController.h"
 #import "CanvasView.h"
 #import "Button.h"
@@ -45,7 +44,7 @@ typedef NS_ENUM(NSInteger, State)
 }
 
 #pragma mark Navigation Bar Setup
-
+//FIX: CHANGE FONT OF RIGHT BAR BUTTON ITEM
 - (void)setupNavigationItem
 {
     self.navigationItem.title = @"Artist";
