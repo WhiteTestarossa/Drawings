@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)drawWithTimer;
 @property (nonatomic, weak) id <CanvasViewDelegate> delegate;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer1;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer2;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer3;
 
 @end
 

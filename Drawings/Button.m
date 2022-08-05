@@ -25,7 +25,7 @@
     [self setTitleColor:[UIColor colorWithRed:33.0/255.0 green:176.0/255 blue:142.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     self.backgroundColor = UIColor.whiteColor;
     self.layer.cornerRadius = 10.0;
-    self.layer.shadowRadius = 2;
+    self.layer.shadowRadius = 1;
     self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
     self.layer.shadowOpacity = 1;
     self.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.25].CGColor;

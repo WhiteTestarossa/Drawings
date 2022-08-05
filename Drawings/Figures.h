@@ -15,6 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 +(UIBezierPath *)lipsPath;
 +(UIBezierPath *)neckPath;
 
++(UIBezierPath *)leavesPath;
++(UIBezierPath *)trunkPath;
++(UIBezierPath *)groundPath;
+
++(UIBezierPath *)skyPath;
++(UIBezierPath *)hillPath;
++(UIBezierPath *)mountainPath;
+
++(UIBezierPath *)planetPath;
++(UIBezierPath *)surfacePath;
++(UIBezierPath *)asteroidsPath;
+
 @end
 
 NS_ASSUME_NONNULL_END

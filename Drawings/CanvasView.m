@@ -10,10 +10,6 @@
 
 @interface CanvasView ()
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) CAShapeLayer *shapeLayer1;
-@property (nonatomic, strong) CAShapeLayer *shapeLayer2;
-@property (nonatomic, strong) CAShapeLayer *shapeLayer3;
-
 @end
 
 @implementation CanvasView
@@ -23,6 +19,7 @@
     self = [super init];
     if (self) {
         [self setup];
+        [self addDrawLayer];
         
     }
     return self;
@@ -44,11 +41,11 @@
 -(void)addDrawLayer
 {
     self.shapeLayer1 = [CAShapeLayer layer];
-    self.shapeLayer1.path = [Figures facePath].CGPath;
+    self.shapeLayer1.path = Figures.facePath.CGPath;
     self.shapeLayer2 = [CAShapeLayer layer];
-    self.shapeLayer2.path = [Figures lipsPath].CGPath;
+    self.shapeLayer2.path = Figures.lipsPath.CGPath;
     self.shapeLayer3 = [CAShapeLayer layer];
-    self.shapeLayer3.path = [Figures neckPath].CGPath;
+    self.shapeLayer3.path = Figures.neckPath.CGPath;
     
     [self.shapeLayer1 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer1.strokeStart = 0;
@@ -96,7 +93,6 @@
 
 -(void)drawWithTimer
 {
-    [self addDrawLayer];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer) userInfo:nil repeats:YES];
 }
 

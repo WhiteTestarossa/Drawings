@@ -128,7 +128,7 @@
 
 #pragma mark Tree
 
-+(UIBezierPath*)leavsPath {
++(UIBezierPath*)leavesPath {
 
     UIBezierPath *leaves = [UIBezierPath bezierPath];
     

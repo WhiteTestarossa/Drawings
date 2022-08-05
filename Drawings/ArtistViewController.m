@@ -9,6 +9,7 @@
 #import "PaletteViewController.h"
 #import "CanvasView.h"
 #import "Button.h"
+#import "Figures.h"
 
 #pragma mark Properties
 
@@ -65,6 +66,8 @@ typedef NS_ENUM(NSInteger, State)
 #pragma mark Navigation
 - (void)drawingsTapped:(id)sender {
     DrawingsViewController *drawingsVC = [[DrawingsViewController alloc] init];
+    drawingsVC.canvas = self.canvasView;
+    [drawingsVC setDelegate: (id)self];
     [self.navigationController pushViewController:drawingsVC animated:true];
 }
 
@@ -190,9 +193,14 @@ typedef NS_ENUM(NSInteger, State)
 
 #pragma mark Category
 
-@interface ArtistViewController (CanvasViewDelegateMethods) 
+@interface ArtistViewController (CanvasViewDelegateMethods) <CanvasViewDelegate, DrawingsVCDelegate>
 
 - (void)didFinishDrawing;
+
+- (void)didChoseHead;
+- (void)didChoseTree;
+- (void)didChosePlanet;
+- (void)didChoseLandscape;
 
 @end
 
@@ -201,6 +209,33 @@ typedef NS_ENUM(NSInteger, State)
 - (void)didFinishDrawing
 {
     [self setupDoneState];
+}
+
+- (void)didChoseHead
+{
+    self.canvasView.shapeLayer1.path = Figures.facePath.CGPath;
+    self.canvasView.shapeLayer2.path = Figures.neckPath.CGPath;
+    self.canvasView.shapeLayer3.path = Figures.lipsPath.CGPath;
+}
+
+- (void)didChosePlanet
+{
+    self.canvasView.shapeLayer1.path = Figures.planetPath.CGPath;
+    self.canvasView.shapeLayer2.path = Figures.asteroidsPath.CGPath;
+    self.canvasView.shapeLayer3.path = Figures.surfacePath.CGPath;
+}
+
+- (void)didChoseTree {
+    self.canvasView.shapeLayer1.path = Figures.leavesPath.CGPath;
+    self.canvasView.shapeLayer2.path = Figures.trunkPath.CGPath;
+    self.canvasView.shapeLayer3.path = Figures.groundPath.CGPath;
+}
+
+- (void)didChoseLandscape
+{
+    self.canvasView.shapeLayer1.path = Figures.skyPath.CGPath;
+    self.canvasView.shapeLayer2.path = Figures.hillPath.CGPath;
+    self.canvasView.shapeLayer3.path = Figures.mountainPath.CGPath;
 }
 
 @end

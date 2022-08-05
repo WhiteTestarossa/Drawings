@@ -7,19 +7,29 @@
 
 import UIKit
 
+@objc protocol DrawingsVCDelegate {
+    func didChosePlanet()
+    func didChoseHead()
+    func didChoseTree()
+    func didChoseLandscape()
+}
 
-class DrawingsViewController: UIViewController {
+
+@objc class DrawingsViewController: UIViewController {
     
     var planetButton: Button!
     var headButton: Button!
     var treeButton: Button!
     var landscapeButton: Button!
+    @objc public var canvas: CanvasView!
+    @objc public var delegate: DrawingsVCDelegate!
    
     //MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupUI()
+        highlite()
     }
     
     //MARK: Setup Navigation Bar
@@ -35,6 +45,7 @@ class DrawingsViewController: UIViewController {
     func setupUI() {
         planetButton = Button(title: "Planet")
         planetButton.contentEdgeInsets = UIEdgeInsets(top: 9.0, left: 47.0, bottom: 9.0, right: 47.0)
+        planetButton.addTarget(self, action: #selector(chooseDrawing(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(planetButton)
         
         NSLayoutConstraint.activate([
@@ -46,6 +57,7 @@ class DrawingsViewController: UIViewController {
         
         headButton = Button(title: "Head")
         headButton.contentEdgeInsets = UIEdgeInsets(top: 9.0, left: 47.0, bottom: 9.0, right: 47.0)
+        headButton.addTarget(self, action: #selector(chooseDrawing(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(headButton)
         
         NSLayoutConstraint.activate([
@@ -57,6 +69,7 @@ class DrawingsViewController: UIViewController {
         
         treeButton = Button(title: "Tree")
         treeButton.contentEdgeInsets = UIEdgeInsets(top: 9.0, left: 47.0, bottom: 9.0, right: 47.0)
+        treeButton.addTarget(self, action: #selector(chooseDrawing(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(treeButton)
         
         NSLayoutConstraint.activate([
@@ -68,6 +81,7 @@ class DrawingsViewController: UIViewController {
         
         landscapeButton = Button(title: "Landscape")
         landscapeButton.contentEdgeInsets = UIEdgeInsets(top: 9.0, left: 47.0, bottom: 9.0, right: 47.0)
+        landscapeButton.addTarget(self, action: #selector(chooseDrawing(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(landscapeButton)
         
         NSLayoutConstraint.activate([
@@ -76,5 +90,40 @@ class DrawingsViewController: UIViewController {
             landscapeButton.widthAnchor.constraint(equalTo: self.planetButton.widthAnchor),
             landscapeButton.heightAnchor.constraint(equalTo: self.planetButton.heightAnchor)
         ])
+    }
+    
+    @objc func chooseDrawing(_ sender: Button) {
+   
+        if (sender == planetButton) {
+            delegate.didChosePlanet()
+        }
+        
+        if (sender == headButton) {
+            delegate.didChoseHead()
+        }
+        
+        if (sender == treeButton) {
+            delegate.didChoseTree()
+        }
+        
+        if (sender == landscapeButton) {
+            delegate.didChoseLandscape()
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func highlite() {
+        switch canvas.shapeLayer1.path {
+        case Figures.facePath().cgPath:
+            headButton.isHighlighted = true
+        case Figures.planetPath().cgPath:
+            planetButton.isHighlighted = true
+        case Figures.leavesPath().cgPath:
+            treeButton.isHighlighted = true
+        case Figures.skyPath().cgPath:
+            landscapeButton.isHighlighted = true
+        default:
+            headButton.isHighlighted = true
+        }
     }
 }
