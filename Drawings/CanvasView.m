@@ -41,11 +41,8 @@
 -(void)addDrawLayer
 {
     self.shapeLayer1 = [CAShapeLayer layer];
-    self.shapeLayer1.path = Figures.facePath.CGPath;
     self.shapeLayer2 = [CAShapeLayer layer];
-    self.shapeLayer2.path = Figures.lipsPath.CGPath;
     self.shapeLayer3 = [CAShapeLayer layer];
-    self.shapeLayer3.path = Figures.neckPath.CGPath;
     
     [self.shapeLayer1 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer1.strokeStart = 0;
@@ -95,5 +92,13 @@
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer) userInfo:nil repeats:YES];
 }
+
+- (void)assignPath1:(UIBezierPath *)path1 Path2:(UIBezierPath *)path2  Path3:(UIBezierPath *)path3
+{
+    self.shapeLayer1.path = path1.CGPath;
+    self.shapeLayer2.path = path2.CGPath;
+    self.shapeLayer3.path = path3.CGPath;
+}
+
 
 @end

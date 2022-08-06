@@ -7,14 +7,6 @@
 
 import UIKit
 
-@objc protocol DrawingsVCDelegate {
-    func didChosePlanet()
-    func didChoseHead()
-    func didChoseTree()
-    func didChoseLandscape()
-}
-
-
 @objc class DrawingsViewController: UIViewController {
     
     var planetButton: Button!
@@ -22,7 +14,7 @@ import UIKit
     var treeButton: Button!
     var landscapeButton: Button!
     @objc public var canvas: CanvasView!
-    @objc public var delegate: DrawingsVCDelegate!
+    @objc public var figure: Figures!
    
     //MARK: View Controller Life Cycle
     override func viewDidLoad() {
@@ -95,32 +87,32 @@ import UIKit
     @objc func chooseDrawing(_ sender: Button) {
    
         if (sender == planetButton) {
-            delegate.didChosePlanet()
+            figure.setupPlanetPath()
         }
         
         if (sender == headButton) {
-            delegate.didChoseHead()
+            figure.setupFacePath()
         }
         
         if (sender == treeButton) {
-            delegate.didChoseTree()
+            figure.setupTreePath()
         }
         
         if (sender == landscapeButton) {
-            delegate.didChoseLandscape()
+            figure.setupLandscapePath()
         }
         self.navigationController?.popViewController(animated: true)
     }
     
     func highlite() {
-        switch canvas.shapeLayer1.path {
-        case Figures.facePath().cgPath:
+        switch figure.path1.cgPath {
+        case figure.facePath().cgPath:
             headButton.isHighlighted = true
-        case Figures.planetPath().cgPath:
+        case figure.planetPath().cgPath:
             planetButton.isHighlighted = true
-        case Figures.leavesPath().cgPath:
+        case figure.leavesPath().cgPath:
             treeButton.isHighlighted = true
-        case Figures.skyPath().cgPath:
+        case figure.skyPath().cgPath:
             landscapeButton.isHighlighted = true
         default:
             headButton.isHighlighted = true

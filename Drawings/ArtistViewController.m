@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, State)
 @property (nonatomic, strong) Button *timerButton;
 @property (nonatomic, strong) Button *drawButton;
 @property (nonatomic, strong) Button *shareButton;
+@property (nonatomic, strong) Figures *figure;
 
 @property(nonatomic) State state;
 
@@ -42,6 +43,7 @@ typedef NS_ENUM(NSInteger, State)
     [self.view setBackgroundColor: UIColor.whiteColor];
     [self setupNavigationItem];
     [self setupUI];
+    self.figure = [[Figures alloc] init];
 }
 
 #pragma mark Navigation Bar Setup
@@ -67,7 +69,7 @@ typedef NS_ENUM(NSInteger, State)
 - (void)drawingsTapped:(id)sender {
     DrawingsViewController *drawingsVC = [[DrawingsViewController alloc] init];
     drawingsVC.canvas = self.canvasView;
-    [drawingsVC setDelegate: (id)self];
+    drawingsVC.figure = self.figure;
     [self.navigationController pushViewController:drawingsVC animated:true];
 }
 
@@ -183,6 +185,9 @@ typedef NS_ENUM(NSInteger, State)
     if (self.state == 0)
     {
         [self setupDrawState];
+        [self.canvasView assignPath1: self.figure.path1
+                               Path2: self.figure.path2
+                               Path3: self.figure.path3];
         [self.canvasView drawWithTimer];
     } else if (self.state == 2){
         self.state = 0;
@@ -193,14 +198,9 @@ typedef NS_ENUM(NSInteger, State)
 
 #pragma mark Category
 
-@interface ArtistViewController (CanvasViewDelegateMethods) <CanvasViewDelegate, DrawingsVCDelegate>
+@interface ArtistViewController (CanvasViewDelegateMethods) <CanvasViewDelegate>
 
 - (void)didFinishDrawing;
-
-- (void)didChoseHead;
-- (void)didChoseTree;
-- (void)didChosePlanet;
-- (void)didChoseLandscape;
 
 @end
 
@@ -209,33 +209,6 @@ typedef NS_ENUM(NSInteger, State)
 - (void)didFinishDrawing
 {
     [self setupDoneState];
-}
-
-- (void)didChoseHead
-{
-    self.canvasView.shapeLayer1.path = Figures.facePath.CGPath;
-    self.canvasView.shapeLayer2.path = Figures.neckPath.CGPath;
-    self.canvasView.shapeLayer3.path = Figures.lipsPath.CGPath;
-}
-
-- (void)didChosePlanet
-{
-    self.canvasView.shapeLayer1.path = Figures.planetPath.CGPath;
-    self.canvasView.shapeLayer2.path = Figures.asteroidsPath.CGPath;
-    self.canvasView.shapeLayer3.path = Figures.surfacePath.CGPath;
-}
-
-- (void)didChoseTree {
-    self.canvasView.shapeLayer1.path = Figures.leavesPath.CGPath;
-    self.canvasView.shapeLayer2.path = Figures.trunkPath.CGPath;
-    self.canvasView.shapeLayer3.path = Figures.groundPath.CGPath;
-}
-
-- (void)didChoseLandscape
-{
-    self.canvasView.shapeLayer1.path = Figures.skyPath.CGPath;
-    self.canvasView.shapeLayer2.path = Figures.hillPath.CGPath;
-    self.canvasView.shapeLayer3.path = Figures.mountainPath.CGPath;
 }
 
 @end

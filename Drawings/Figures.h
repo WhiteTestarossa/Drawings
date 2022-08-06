@@ -11,21 +11,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Figures : UIBezierPath
 
-+(UIBezierPath *)facePath;
-+(UIBezierPath *)lipsPath;
-+(UIBezierPath *)neckPath;
+@property (nonatomic, strong) UIBezierPath *path1;
+@property (nonatomic, strong) UIBezierPath *path2;
+@property (nonatomic, strong) UIBezierPath *path3;
 
-+(UIBezierPath *)leavesPath;
-+(UIBezierPath *)trunkPath;
-+(UIBezierPath *)groundPath;
+- (void)setupFacePath;
+- (void)setupTreePath;
+- (void)setupPlanetPath;
+- (void)setupLandscapePath;
 
-+(UIBezierPath *)skyPath;
-+(UIBezierPath *)hillPath;
-+(UIBezierPath *)mountainPath;
-
-+(UIBezierPath *)planetPath;
-+(UIBezierPath *)surfacePath;
-+(UIBezierPath *)asteroidsPath;
+- (UIBezierPath *)facePath;
+- (UIBezierPath *)leavesPath;
+- (UIBezierPath *)planetPath;
+- (UIBezierPath *)skyPath;
 
 @end
 

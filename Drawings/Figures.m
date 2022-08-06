@@ -9,9 +9,47 @@
 
 @implementation Figures
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupFacePath];
+    }
+    
+    return self;
+}
+
+- (void)setupFacePath
+{
+    self.path1 = [self facePath];
+    self.path2 = [self lipsPath];
+    self.path3 = [self neckPath];
+}
+
+- (void)setupTreePath
+{
+    self.path1 = [self leavesPath];
+    self.path2 = [self trunkPath];
+    self.path3 = [self groundPath];
+}
+
+- (void)setupPlanetPath
+{
+    self.path1 = [self planetPath];
+    self.path2 = [self surfacePath];
+    self.path3 = [self asteroidsPath];
+}
+
+- (void)setupLandscapePath
+{
+    self.path1 = [self skyPath];
+    self.path2 = [self hillPath];
+    self.path3 = [self mountainPath];
+}
+
 #pragma mark Face
 
-+(UIBezierPath*)facePath
+- (UIBezierPath*)facePath
 {
     UIBezierPath *face = [UIBezierPath bezierPath];
     
@@ -34,7 +72,7 @@
     return face;
 }
 
-+(UIBezierPath*)lipsPath {
+- (UIBezierPath*)lipsPath {
     UIBezierPath *lips = [UIBezierPath bezierPath];
     
     [lips moveToPoint: CGPointMake(184, 100)];
@@ -79,7 +117,7 @@
     return lips;
 }
 
-+(UIBezierPath*)neckPath {
+-(UIBezierPath*)neckPath {
     UIBezierPath *head = [UIBezierPath bezierPath];
 
     [head moveToPoint: CGPointMake(189.5, 102.5)];
@@ -128,7 +166,7 @@
 
 #pragma mark Tree
 
-+(UIBezierPath*)leavesPath {
+- (UIBezierPath*)leavesPath {
 
     UIBezierPath *leaves = [UIBezierPath bezierPath];
     
@@ -194,7 +232,7 @@
 }
 
 
-+(UIBezierPath*)trunkPath {
+- (UIBezierPath*)trunkPath {
     
     UIBezierPath *trunk = [UIBezierPath bezierPath];
 
@@ -216,7 +254,7 @@
 }
 
 
-+(UIBezierPath*)groundPath {
+- (UIBezierPath*)groundPath {
     
     UIBezierPath *ground = [UIBezierPath bezierPath];
 
@@ -239,7 +277,7 @@
 
 #pragma mark Landscape
 
-+(UIBezierPath*)skyPath {
+- (UIBezierPath*)skyPath {
     
     UIBezierPath *sky = [UIBezierPath bezierPath];
     
@@ -411,7 +449,7 @@
     return sky;
 }
 
-+(UIBezierPath*)hillPath {
+- (UIBezierPath*)hillPath {
     
     UIBezierPath *hill = [UIBezierPath bezierPath];
 
@@ -459,7 +497,7 @@
     return hill;
 }
 
-+(UIBezierPath*)mountainPath {
+- (UIBezierPath*)mountainPath {
     UIBezierPath *mountain = [UIBezierPath bezierPath];
     
     [mountain moveToPoint: CGPointMake(103.5, 153)];
@@ -580,7 +618,7 @@
 
 #pragma mark Planet
 
-+(UIBezierPath*)planetPath {
+- (UIBezierPath*)planetPath {
     
     UIBezierPath *planet = [UIBezierPath bezierPath];
     
@@ -717,7 +755,7 @@
 }
 
 
-+(UIBezierPath*)surfacePath {
+- (UIBezierPath*)surfacePath {
     
     UIBezierPath *surface = [UIBezierPath bezierPath];
     
@@ -817,7 +855,7 @@
 }
 
 
-+(UIBezierPath*)asteroidsPath {
+- (UIBezierPath*)asteroidsPath {
     
     UIBezierPath *asteroids = [UIBezierPath bezierPath];
     
