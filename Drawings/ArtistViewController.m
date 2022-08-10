@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, State)
     [self setupNavigationItem];
     [self setupUI];
     self.figure = [[Figures alloc] init];
+    self.time = 1.0;
 }
 
 #pragma mark Navigation Bar Setup
@@ -76,6 +77,23 @@ typedef NS_ENUM(NSInteger, State)
 - (void)paletteTapped:(id)sender {
     PaletteViewController *paletteVC = [[PaletteViewController alloc] init];
     [self presentViewController:paletteVC animated:true completion:nil];
+}
+
+- (void)timerTapped:(id)sender {
+    TimerViewController *timerVC = [[TimerViewController alloc] init];
+    timerVC.artistVC = self;
+    timerVC.view.translatesAutoresizingMaskIntoConstraints = false;
+    [self addChildViewController: timerVC];
+    [self.view addSubview:timerVC.view];
+    [NSLayoutConstraint activateConstraints:@[
+            [timerVC.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+            [timerVC.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+            [timerVC.view.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+            [timerVC.view.topAnchor constraintEqualToAnchor:self.view.centerYAnchor]
+        ]];
+    [timerVC didMoveToParentViewController:self];
+    
+    
 }
 
 #pragma mark UI Setup
@@ -113,6 +131,7 @@ typedef NS_ENUM(NSInteger, State)
     ]];
     
     self.timerButton = [[Button alloc] initWithTitle:@"Open Timer"];
+    [self.timerButton addTarget:self action:@selector(timerTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.timerButton];
     
     [NSLayoutConstraint activateConstraints:@[
@@ -188,7 +207,7 @@ typedef NS_ENUM(NSInteger, State)
         [self.canvasView assignPath1: self.figure.path1
                                Path2: self.figure.path2
                                Path3: self.figure.path3];
-        [self.canvasView drawWithTimer];
+        [self.canvasView drawWithTimer: self.time];
     } else if (self.state == 2){
         self.state = 0;
         [self setupIdleState];

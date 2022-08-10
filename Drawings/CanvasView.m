@@ -70,12 +70,13 @@
     [self.layer addSublayer: self.shapeLayer3];
 }
 
--(void)drawAtLayer
+-(void)drawAtLayer:(NSTimer *)timer
 {
     if (self.shapeLayer1.strokeEnd < 1 && self.shapeLayer2.strokeEnd <1 && self.shapeLayer3.strokeEnd < 1) {
-        self.shapeLayer1.strokeEnd += (1.0 / (60.0 * 2.0));
-        self.shapeLayer2.strokeEnd += (1.0 / (60.0 * 2.0));
-        self.shapeLayer3.strokeEnd += (1.0 / (60.0 * 2.0));
+        float time = [timer.userInfo floatValue];
+        self.shapeLayer1.strokeEnd += (CGFloat)(1.0 / (60.0 * time));
+        self.shapeLayer2.strokeEnd += (CGFloat)(1.0 / (60.0 * time));
+        self.shapeLayer3.strokeEnd += (CGFloat)(1.0 / (60.0 * time));
     } else {
         [self.timer invalidate];
         [self setTimer: nil];
@@ -88,9 +89,9 @@
     }
 }
 
--(void)drawWithTimer
+-(void)drawWithTimer:(float)time
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(drawAtLayer:) userInfo:[NSNumber numberWithFloat:time] repeats:YES];
 }
 
 - (void)assignPath1:(UIBezierPath *)path1 Path2:(UIBezierPath *)path2  Path3:(UIBezierPath *)path3

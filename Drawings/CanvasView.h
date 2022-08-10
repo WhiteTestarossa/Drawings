@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CanvasView : UIView
 
--(void)drawWithTimer;
+-(void)drawWithTimer:(float)time;
 @property (nonatomic, weak) id <CanvasViewDelegate> delegate;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer1;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer2;

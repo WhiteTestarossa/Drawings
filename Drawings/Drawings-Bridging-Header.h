@@ -5,3 +5,4 @@
 #import "Button.h"
 #import "CanvasView.h"
 #import "Figures.h"
+#import "ArtistViewController.h"

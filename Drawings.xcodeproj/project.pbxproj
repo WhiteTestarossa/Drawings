@@ -19,6 +19,7 @@
 		9A065E9028986936004D57F9 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E8F28986936004D57F9 /* Button.m */; };
 		9A065E9328986C4F004D57F9 /* Figures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E9228986C4F004D57F9 /* Figures.m */; };
 		9A065E9928986CAD004D57F9 /* PaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E9828986CAD004D57F9 /* PaletteViewController.m */; };
+		9A6A18CD28A3932D002A3454 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A18CC28A3932D002A3454 /* TimerViewController.swift */; };
 		9A87C2EB289BB9FD005E25CB /* DrawingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		9A065E9228986C4F004D57F9 /* Figures.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Figures.m; sourceTree = "<group>"; };
 		9A065E9728986CAD004D57F9 /* PaletteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaletteViewController.h; sourceTree = "<group>"; };
 		9A065E9828986CAD004D57F9 /* PaletteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaletteViewController.m; sourceTree = "<group>"; };
+		9A6A18CC28A3932D002A3454 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		9A87C2E9289BB9FC005E25CB /* Drawings-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drawings-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				9A065E88289867FC004D57F9 /* ArtistViewController.h */,
 				9A065E89289867FC004D57F9 /* ArtistViewController.m */,
 				9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */,
+				9A6A18CC28A3932D002A3454 /* TimerViewController.swift */,
 				9A065E9728986CAD004D57F9 /* PaletteViewController.h */,
 				9A065E9828986CAD004D57F9 /* PaletteViewController.m */,
 				9A065E8B28986891004D57F9 /* CanvasView.h */,
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6A18CD28A3932D002A3454 /* TimerViewController.swift in Sources */,
 				9A065E9328986C4F004D57F9 /* Figures.m in Sources */,
 				9A065E4F289845B5004D57F9 /* AppDelegate.m in Sources */,
 				9A065E9928986CAD004D57F9 /* PaletteViewController.m in Sources */,
