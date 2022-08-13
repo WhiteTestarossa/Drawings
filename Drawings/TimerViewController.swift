@@ -34,6 +34,7 @@ class TimerViewController: UIViewController {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.addTarget(self, action: #selector(saveTapped(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(saveButton)
+        //FIX: COnstraints
         NSLayoutConstraint.activate([
             saveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 250.0),
             saveButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20.0),

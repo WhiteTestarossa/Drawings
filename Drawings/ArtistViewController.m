@@ -76,7 +76,16 @@ typedef NS_ENUM(NSInteger, State)
 
 - (void)paletteTapped:(id)sender {
     PaletteViewController *paletteVC = [[PaletteViewController alloc] init];
-    [self presentViewController:paletteVC animated:true completion:nil];
+    paletteVC.view.translatesAutoresizingMaskIntoConstraints = false;
+    [self addChildViewController:paletteVC];
+    [self.view addSubview:paletteVC.view];
+    [NSLayoutConstraint activateConstraints:@[
+        [paletteVC.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [paletteVC.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [paletteVC.view.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [paletteVC.view.topAnchor constraintEqualToAnchor:self.view.centerYAnchor]
+    ]];
+    [paletteVC didMoveToParentViewController:self];
 }
 
 - (void)timerTapped:(id)sender {

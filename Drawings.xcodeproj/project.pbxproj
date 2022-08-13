@@ -20,6 +20,7 @@
 		9A065E9328986C4F004D57F9 /* Figures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E9228986C4F004D57F9 /* Figures.m */; };
 		9A065E9928986CAD004D57F9 /* PaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A065E9828986CAD004D57F9 /* PaletteViewController.m */; };
 		9A6A18CD28A3932D002A3454 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A18CC28A3932D002A3454 /* TimerViewController.swift */; };
+		9A6A18D328A633DB002A3454 /* PaletteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A18D228A633DB002A3454 /* PaletteButton.m */; };
 		9A87C2EB289BB9FD005E25CB /* DrawingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		9A065E9728986CAD004D57F9 /* PaletteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaletteViewController.h; sourceTree = "<group>"; };
 		9A065E9828986CAD004D57F9 /* PaletteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaletteViewController.m; sourceTree = "<group>"; };
 		9A6A18CC28A3932D002A3454 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		9A6A18D128A633DB002A3454 /* PaletteButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaletteButton.h; sourceTree = "<group>"; };
+		9A6A18D228A633DB002A3454 /* PaletteButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaletteButton.m; sourceTree = "<group>"; };
 		9A87C2E9289BB9FC005E25CB /* Drawings-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drawings-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +100,8 @@
 				9A065E9228986C4F004D57F9 /* Figures.m */,
 				9A065E8E28986936004D57F9 /* Button.h */,
 				9A065E8F28986936004D57F9 /* Button.m */,
+				9A6A18D128A633DB002A3454 /* PaletteButton.h */,
+				9A6A18D228A633DB002A3454 /* PaletteButton.m */,
 				9A065E59289845B9004D57F9 /* Assets.xcassets */,
 				9A065E5B289845B9004D57F9 /* LaunchScreen.storyboard */,
 				9A065E5E289845B9004D57F9 /* Info.plist */,
@@ -195,6 +200,7 @@
 				9A065E52289845B5004D57F9 /* SceneDelegate.m in Sources */,
 				9A065E9028986936004D57F9 /* Button.m in Sources */,
 				9A065E8A289867FC004D57F9 /* ArtistViewController.m in Sources */,
+				9A6A18D328A633DB002A3454 /* PaletteButton.m in Sources */,
 				9A065E8D28986891004D57F9 /* CanvasView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
