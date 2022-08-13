@@ -31,7 +31,7 @@
 {
     self.backgroundColor = UIColor.whiteColor;
     self.layer.cornerRadius = 10.0;
-    self.layer.shadowRadius = 1;
+    self.layer.shadowRadius = 2;
     self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
     self.layer.shadowOpacity = 1;
     self.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.25].CGColor;
@@ -43,10 +43,10 @@
     self.innerView.layer.cornerRadius = 6.0;
     [self.innerView setUserInteractionEnabled:FALSE];
     [self addSubview:self.innerView];
-    
+
     self.heightConstraint = [self.innerView.heightAnchor constraintEqualToConstant:24.0];
     self.widthConstraint = [self.innerView.widthAnchor constraintEqualToConstant:24.0];
-    
+
     [NSLayoutConstraint activateConstraints:@[
        self.heightConstraint,
        self.widthConstraint,

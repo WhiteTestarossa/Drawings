@@ -12,6 +12,8 @@
 @interface PaletteViewController ()
 @property (nonatomic, strong) Button *saveButton;
 @property (nonatomic, strong) NSArray<UIColor *> *colorsArray;
+@property (nonatomic, strong) UIStackView *topStackView;
+@property (nonatomic, strong) UIStackView *bottomStackView;
 @end
 
 @implementation PaletteViewController
@@ -19,7 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [self fillColorsArray];
     [self setupPalette];
+ 
 }
 
 - (void)setupUI
@@ -51,6 +55,7 @@
     UIColor *color4 = [[UIColor alloc] initWithRed:128.0/255.0 green:128.0/255.0 blue:128.0/255.0 alpha:1.0];
     UIColor *color5 = [[UIColor alloc] initWithRed:157.0/255.0 green:94.0/255.0 blue:234.0/255.0 alpha:1.0];
     UIColor *color6 = [[UIColor alloc] initWithRed:255.0/255.0 green:122.0/255.0 blue:104.0/255.0 alpha:1.0];
+    
     UIColor *color7 = [[UIColor alloc] initWithRed:255.0/255.0 green:173.0/255.0 blue:84.0/255.0 alpha:1.0];
     UIColor *color8 = [[UIColor alloc] initWithRed:0.0/255.0 green:174.0/255.0 blue:237.0/255.0 alpha:1.0];
     UIColor *color9 = [[UIColor alloc] initWithRed:255.0/255.0 green:119.0/255.0 blue:162.0/255.0 alpha:1.0];
@@ -63,19 +68,53 @@
 
 - (void)setupPalette
 {
-    PaletteButton *b = [[PaletteButton alloc] initWithColor:UIColor.redColor];
-    [self.view addSubview:b];
+    self.topStackView = [[UIStackView alloc] init];
+    self.topStackView.translatesAutoresizingMaskIntoConstraints = FALSE;
+    self.topStackView.axis = UILayoutConstraintAxisHorizontal;
+    self.topStackView.distribution = UIStackViewDistributionFillEqually;
+    self.topStackView.spacing = 20;
+    
+    
+    self.bottomStackView = [[UIStackView alloc] init];
+    self.bottomStackView.translatesAutoresizingMaskIntoConstraints = FALSE;
+    self.bottomStackView.axis = UILayoutConstraintAxisHorizontal;
+    self.bottomStackView.distribution = UIStackViewDistributionFillEqually;
+    self.bottomStackView.spacing = 20;
+    
+    [self.view addSubview: self.topStackView];
+    [self.view addSubview: self.bottomStackView];
+    
+    for (int i = 0; i < 6; i++)
+    {
+        UIColor *color = [self.colorsArray objectAtIndex:i];
+        PaletteButton *button = [self createButton:color];
+        [self.topStackView addArrangedSubview:button];
+    }
+    
+    for (int i = 6; i < 12; i++)
+    {
+        UIColor *color = [self.colorsArray objectAtIndex:i];
+        PaletteButton *button = [self createButton:color];
+        [self.bottomStackView addArrangedSubview:button];
+    }
+    
     [NSLayoutConstraint activateConstraints:@[
-        [b.widthAnchor constraintEqualToConstant:40.0],
-        [b.heightAnchor constraintEqualToConstant:40.0],
-        [b.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:17.0],
-        [b.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:92.0]
+        [self.topStackView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:17.0],
+        [self.topStackView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-18.0],
+        [self.topStackView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:92.0],
+        [self.topStackView.heightAnchor constraintEqualToConstant:40.0],
+        
+        [self.bottomStackView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:17.0],
+        [self.bottomStackView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-18.0],
+        [self.bottomStackView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-141.5],
+        [self.bottomStackView.heightAnchor constraintEqualToConstant:40.0]
     ]];
 }
 
-- (void)createButton
+- (PaletteButton *)createButton:(UIColor *)color
 {
-    
+    PaletteButton *button = [[PaletteButton alloc] initWithColor:color];
+    return button;
 }
 
 
