@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) CAShapeLayer *shapeLayer2;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer3;
 - (void)assignPath1:(UIBezierPath *)path1 Path2:(UIBezierPath *)path2  Path3:(UIBezierPath *)path3;
+- (void)assignColors:(NSMutableArray <UIColor *> *)colors;
 
 @end
 

@@ -8,11 +8,9 @@
 #import "PaletteButton.h"
 @interface PaletteButton ()
 
-@property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIView *innerView;
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *widthConstraint;
-@property (nonatomic, assign) BOOL isChosen;
 @end
 
 @implementation PaletteButton
@@ -61,11 +59,7 @@
 {
     [super touchesEnded:touches withEvent:event];
     
-    if (self.isChosen == FALSE) {
-        [self selectColor];
-    } else {
-        [self cancelColor];
-    }
+    [self toggleButton];
    
 }
 
@@ -113,6 +107,16 @@
     [UIView animateWithDuration:0.2 animations:^{
         [self layoutIfNeeded];
     }];
+}
+
+- (void)toggleButton
+{
+    if (self.isChosen == FALSE)
+    {
+        [self selectColor];
+    } else {
+        [self cancelColor];
+    }
 }
 
 

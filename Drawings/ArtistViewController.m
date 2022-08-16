@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, State)
 @property (nonatomic, strong) Button *drawButton;
 @property (nonatomic, strong) Button *shareButton;
 @property (nonatomic, strong) Figures *figure;
+@property (nonatomic, strong) PaletteViewController *paletteVC;
 
 @property(nonatomic) State state;
 
@@ -43,8 +44,10 @@ typedef NS_ENUM(NSInteger, State)
     [self.view setBackgroundColor: UIColor.whiteColor];
     [self setupNavigationItem];
     [self setupUI];
+    
     self.figure = [[Figures alloc] init];
     self.time = 1.0;
+    self.paletteVC = [[PaletteViewController alloc] init];
 }
 
 #pragma mark Navigation Bar Setup
@@ -75,17 +78,17 @@ typedef NS_ENUM(NSInteger, State)
 }
 
 - (void)paletteTapped:(id)sender {
-    PaletteViewController *paletteVC = [[PaletteViewController alloc] init];
-    paletteVC.view.translatesAutoresizingMaskIntoConstraints = false;
-    [self addChildViewController:paletteVC];
-    [self.view addSubview:paletteVC.view];
+    self.paletteVC.view.translatesAutoresizingMaskIntoConstraints = false;
+    [self addChildViewController:self.paletteVC];
+    [self.view addSubview:self.paletteVC.view];
+    self.paletteVC.delegate = (id)self;
     [NSLayoutConstraint activateConstraints:@[
-        [paletteVC.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
-        [paletteVC.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
-        [paletteVC.view.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
-        [paletteVC.view.topAnchor constraintEqualToAnchor:self.view.centerYAnchor]
+        [self.paletteVC.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.paletteVC.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [self.paletteVC.view.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.paletteVC.view.topAnchor constraintEqualToAnchor:self.view.centerYAnchor]
     ]];
-    [paletteVC didMoveToParentViewController:self];
+    [self.paletteVC didMoveToParentViewController:self];
 }
 
 - (void)timerTapped:(id)sender {
@@ -226,17 +229,26 @@ typedef NS_ENUM(NSInteger, State)
 
 #pragma mark Category
 
-@interface ArtistViewController (CanvasViewDelegateMethods) <CanvasViewDelegate>
+@interface ArtistViewController (DelegateMethods) <CanvasViewDelegate, PaletteViewDelegate>
 
 - (void)didFinishDrawing;
+- (void)didTappedSave:(NSMutableArray<UIColor *> *)colors;
 
 @end
 
-@implementation ArtistViewController (CanvasViewDelegateMethods)
+@implementation ArtistViewController (DelegateMethods)
 
 - (void)didFinishDrawing
 {
     [self setupDoneState];
+}
+
+- (void)didTappedSave:(NSMutableArray<UIColor *> *)colors
+{
+    [self.canvasView assignColors:colors];
+    [self.paletteVC willMoveToParentViewController:nil];
+    [self.paletteVC.view removeFromSuperview];
+    [self.paletteVC removeFromParentViewController];
 }
 
 @end

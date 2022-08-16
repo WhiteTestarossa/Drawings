@@ -47,14 +47,14 @@
     [self.shapeLayer1 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer1.strokeStart = 0;
     self.shapeLayer1.strokeEnd = 0;
-    self.shapeLayer1.strokeColor = [UIColor orangeColor].CGColor;
+    self.shapeLayer1.strokeColor = [UIColor blackColor].CGColor;
     self.shapeLayer1.lineWidth   = 2.0;
     self.shapeLayer1.lineCap = kCALineCapRound;
     
     [self.shapeLayer2 setFillColor:UIColor.whiteColor.CGColor];
     self.shapeLayer2.strokeStart = 0;
     self.shapeLayer2.strokeEnd = 0;
-    self.shapeLayer2.strokeColor = [UIColor blueColor].CGColor;
+    self.shapeLayer2.strokeColor = [UIColor blackColor].CGColor;
     self.shapeLayer2.lineWidth   = 2.0;
     self.shapeLayer2.lineCap = kCALineCapRound;
     
@@ -101,5 +101,16 @@
     self.shapeLayer3.path = path3.CGPath;
 }
 
+- (void)assignColors:(NSMutableArray<UIColor *> *)colors
+{
+    NSMutableArray<UIColor *> *tempColors = [[NSMutableArray alloc] initWithArray:colors];
+    while (tempColors.count < 3) {
+        [tempColors addObject: UIColor.blackColor];
+    }
+    
+    self.shapeLayer1.strokeColor = tempColors.firstObject.CGColor;
+    self.shapeLayer2.strokeColor = [tempColors objectAtIndex:1].CGColor;
+    self.shapeLayer3.strokeColor = tempColors.lastObject.CGColor;
+}
 
 @end

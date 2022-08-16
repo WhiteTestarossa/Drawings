@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray<UIColor *> *colorsArray;
 @property (nonatomic, strong) UIStackView *topStackView;
 @property (nonatomic, strong) UIStackView *bottomStackView;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation PaletteViewController
@@ -23,7 +24,6 @@
     [self setupUI];
     [self fillColorsArray];
     [self setupPalette];
- 
 }
 
 - (void)setupUI
@@ -38,6 +38,7 @@
     
     self.saveButton = [[Button alloc] initWithTitle:@"Save"];
     self.saveButton.translatesAutoresizingMaskIntoConstraints = false;
+    [self.saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.saveButton];
     [NSLayoutConstraint activateConstraints:@[
        [self.saveButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:250.0],
@@ -64,6 +65,7 @@
     UIColor *color12 = [[UIColor alloc] initWithRed:97.0/255.0 green:15.0/255.0 blue:16.0/255.0 alpha:1.0];
     
     self.colorsArray = [[NSArray alloc] initWithObjects:color1, color2, color3, color4, color5, color6, color7, color8, color9, color10, color11, color12, nil];
+    self.selectedColors = [[NSMutableArray alloc] init];
 }
 
 - (void)setupPalette
@@ -114,8 +116,53 @@
 - (PaletteButton *)createButton:(UIColor *)color
 {
     PaletteButton *button = [[PaletteButton alloc] initWithColor:color];
+    [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
 
+- (void)buttonTapped:(PaletteButton *)button
+{
+    if (button.isChosen)
+    {
+        [self.selectedColors removeObject:button.color];
+    } else {
+        if (self.selectedColors.count <= 2)
+        {
+            [self.selectedColors addObject:button.color];
+        } else {
+            UIColor *color = self.selectedColors.firstObject;
+            NSArray *buttonsArray = [self.topStackView.arrangedSubviews arrayByAddingObjectsFromArray:self.bottomStackView.arrangedSubviews];
+            
+            for (PaletteButton *b in buttonsArray)
+            {
+                if ([b.color isEqual:color])
+                {
+                    [b toggleButton];
+                }
+            }
+            [self.selectedColors removeObjectAtIndex:0];
+            [self.selectedColors addObject:button.color];
+            
+        }
+        
+        self.view.backgroundColor = button.color;
+        [self.timer invalidate];
+        [self timerForButton];
+    }
+}
+
+- (void)saveButtonTapped
+{
+    [self.delegate didTappedSave: self.selectedColors];
+}
+
+- (void)timerForButton
+{
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:false block:^(NSTimer * _Nonnull timer) {
+        self.view.backgroundColor = UIColor.whiteColor;
+        [self.timer invalidate];
+    }];
+}
 
 @end
