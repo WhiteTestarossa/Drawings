@@ -113,4 +113,13 @@
     self.shapeLayer3.strokeColor = tempColors.lastObject.CGColor;
 }
 
+- (NSData *)shareImageFromCanvas
+{
+    UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithBounds:self.bounds];
+    NSData *jpegData = [renderer JPEGDataWithCompressionQuality:1.0 actions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+        [self.layer renderInContext:rendererContext.CGContext];
+    }];
+    return jpegData;
+}
+
 @end

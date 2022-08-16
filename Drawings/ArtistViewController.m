@@ -104,8 +104,13 @@ typedef NS_ENUM(NSInteger, State)
             [timerVC.view.topAnchor constraintEqualToAnchor:self.view.centerYAnchor]
         ]];
     [timerVC didMoveToParentViewController:self];
-    
-    
+}
+
+- (void)shareTapped:(id)sender
+{
+    NSData *imageData = [self.canvasView shareImageFromCanvas];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[imageData] applicationActivities:nil];
+    [self presentViewController:activityVC animated:true completion:nil];
 }
 
 #pragma mark UI Setup
@@ -153,7 +158,7 @@ typedef NS_ENUM(NSInteger, State)
     
     self.shareButton = [[Button alloc] initWithTitle:@"Share"];
     [self.view addSubview:self.shareButton];
-    
+    [self.shareButton addTarget:self action:@selector(shareTapped:) forControlEvents:UIControlEventTouchUpInside];
     [NSLayoutConstraint activateConstraints:@[
         [self.shareButton.topAnchor constraintEqualToAnchor:self.drawButton.bottomAnchor constant:20.0],
         [self.shareButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant: -41.0],
