@@ -116,8 +116,10 @@
 - (NSData *)shareImageFromCanvas
 {
     UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithBounds:self.bounds];
-    NSData *jpegData = [renderer JPEGDataWithCompressionQuality:1.0 actions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
-        [self.layer renderInContext:rendererContext.CGContext];
+    NSData *jpegData = [renderer JPEGDataWithCompressionQuality:1.0 actions:^(UIGraphicsImageRendererContext *rendererContext) {
+        [self.shapeLayer1 renderInContext:rendererContext.CGContext];
+        [self.shapeLayer2 renderInContext:rendererContext.CGContext];
+        [self.shapeLayer3 renderInContext:rendererContext.CGContext];
     }];
     return jpegData;
 }
