@@ -41,10 +41,10 @@
     [self.saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.saveButton];
     [NSLayoutConstraint activateConstraints:@[
-       [self.saveButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:250.0],
+       [self.saveButton.heightAnchor constraintEqualToConstant:32.0],
        [self.saveButton.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20.0],
        [self.saveButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-40.0],
-       [self.saveButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-281.5]
+       [self.saveButton.widthAnchor constraintEqualToConstant:85.0]
     ]];
 }
 
@@ -108,7 +108,7 @@
         
         [self.bottomStackView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:17.0],
         [self.bottomStackView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-18.0],
-        [self.bottomStackView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-141.5],
+        [self.bottomStackView.topAnchor constraintEqualToAnchor:self.topStackView.bottomAnchor constant: 20.0],
         [self.bottomStackView.heightAnchor constraintEqualToConstant:40.0]
     ]];
 }
