@@ -83,25 +83,10 @@
 		9A065E4C289845B5004D57F9 /* Drawings */ = {
 			isa = PBXGroup;
 			children = (
-				9A065E4D289845B5004D57F9 /* AppDelegate.h */,
-				9A065E4E289845B5004D57F9 /* AppDelegate.m */,
-				9A065E50289845B5004D57F9 /* SceneDelegate.h */,
-				9A065E51289845B5004D57F9 /* SceneDelegate.m */,
+				9A6E804128FD3D76007CA823 /* System */,
 				9A065E83289867A6004D57F9 /* Fonts */,
-				9A065E88289867FC004D57F9 /* ArtistViewController.h */,
-				9A065E89289867FC004D57F9 /* ArtistViewController.m */,
-				9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */,
-				9A6A18CC28A3932D002A3454 /* TimerViewController.swift */,
-				9A065E9728986CAD004D57F9 /* PaletteViewController.h */,
-				9A065E9828986CAD004D57F9 /* PaletteViewController.m */,
-				9A065E8B28986891004D57F9 /* CanvasView.h */,
-				9A065E8C28986891004D57F9 /* CanvasView.m */,
-				9A065E9128986C4F004D57F9 /* Figures.h */,
-				9A065E9228986C4F004D57F9 /* Figures.m */,
-				9A065E8E28986936004D57F9 /* Button.h */,
-				9A065E8F28986936004D57F9 /* Button.m */,
-				9A6A18D128A633DB002A3454 /* PaletteButton.h */,
-				9A6A18D228A633DB002A3454 /* PaletteButton.m */,
+				9A6E803F28FD3D16007CA823 /* Controller */,
+				9A6E804028FD3D6A007CA823 /* View */,
 				9A065E59289845B9004D57F9 /* Assets.xcassets */,
 				9A065E5B289845B9004D57F9 /* LaunchScreen.storyboard */,
 				9A065E5E289845B9004D57F9 /* Info.plist */,
@@ -118,6 +103,45 @@
 				9A065E85289867A6004D57F9 /* Montserrat-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9A6E803F28FD3D16007CA823 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A065E88289867FC004D57F9 /* ArtistViewController.h */,
+				9A065E89289867FC004D57F9 /* ArtistViewController.m */,
+				9A87C2EA289BB9FD005E25CB /* DrawingsViewController.swift */,
+				9A6A18CC28A3932D002A3454 /* TimerViewController.swift */,
+				9A065E9728986CAD004D57F9 /* PaletteViewController.h */,
+				9A065E9828986CAD004D57F9 /* PaletteViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9A6E804028FD3D6A007CA823 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A065E8B28986891004D57F9 /* CanvasView.h */,
+				9A065E8C28986891004D57F9 /* CanvasView.m */,
+				9A065E9128986C4F004D57F9 /* Figures.h */,
+				9A065E9228986C4F004D57F9 /* Figures.m */,
+				9A065E8E28986936004D57F9 /* Button.h */,
+				9A065E8F28986936004D57F9 /* Button.m */,
+				9A6A18D128A633DB002A3454 /* PaletteButton.h */,
+				9A6A18D228A633DB002A3454 /* PaletteButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A6E804128FD3D76007CA823 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				9A065E4D289845B5004D57F9 /* AppDelegate.h */,
+				9A065E4E289845B5004D57F9 /* AppDelegate.m */,
+				9A065E50289845B5004D57F9 /* SceneDelegate.h */,
+				9A065E51289845B5004D57F9 /* SceneDelegate.m */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
