@@ -47,6 +47,7 @@ class TimerViewController: UIViewController {
         slider.minimumValue = 1.0
         slider.maximumValue = 5.0
         slider.tintColor = UIColor(red: 33.0/255.0, green: 176.0/255, blue: 142.0/255.0, alpha: 1.0)
+        slider.value = artistVC.time
         slider.addTarget(self, action: #selector(sliderDidChange(sender:)), for: .valueChanged)
         
         self.view.addSubview(slider)
