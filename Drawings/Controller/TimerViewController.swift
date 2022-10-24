@@ -34,12 +34,12 @@ class TimerViewController: UIViewController {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.addTarget(self, action: #selector(saveTapped(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(saveButton)
-        //FIX: COnstraints
+        
         NSLayoutConstraint.activate([
-            saveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 250.0),
+            saveButton.heightAnchor.constraint(equalToConstant: 32.0),
             saveButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20.0),
             saveButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40.0),
-            saveButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -281.5)
+            saveButton.widthAnchor.constraint(equalToConstant: 85.0)
         ])
         
         slider = UISlider()
